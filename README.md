@@ -25,10 +25,10 @@
 ![ERD](./img/ERD.png)
 
 # 🔗기능정의서
-![ERD](./img/기능정의서 이미지.png)
+![ERD](./img/기능정의서_이미지.png)
 
-# class diagram
-![ERD](./img/class diagram.png)
+# 🔗 Class diagram
+![ERD](./img/class_diagram.png)
 
 # 🎤소감
 ![ERD](./img/011.png)
