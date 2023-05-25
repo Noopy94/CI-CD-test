@@ -11,13 +11,25 @@
 
 # 🔊프로젝트 설명
 ![ERD](./img/001.png)
+![ERD](./img/002.png)
+![ERD](./img/003.png)
+![ERD](./img/004.png)
+![ERD](./img/005.png)
+![ERD](./img/006.png)
+![ERD](./img/007.png)
+![ERD](./img/008.png)
+![ERD](./img/009.png)
+![ERD](./img/010.png)
 
 # 🔗ER diagram
-![ERD](./img/SSAFIT_DB_ERD.png)
+![ERD](./img/ERD.png)
 
-# 📝프로젝트 소스
-## - User Controller
+# 🔗기능정의서
+![ERD](./img/기능정의서 이미지.png)
 
-
+# class diagram
+![ERD](./img/class diagram.png)
 
 # 🎤소감
+![ERD](./img/011.png)
+![ERD](./img/012.png)
