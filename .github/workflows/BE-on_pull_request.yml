@@ -18,7 +18,7 @@ jobs:
 
     # 실행할 명령들을 순서에 맞게 나열
     steps:
-      # 현재 프로젝트로 작업영역 설정
+      # 현재 프로젝트로 작업영역 설정123
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -32,4 +32,4 @@ jobs:
 
       # 빌드 명령어 실행
       - name: Build with Maven
-        run: cd <BE 폴더명> && mvn -B package --file pom.xml
+        run: cd ssafit_spring && mvn -B package --file pom.xml
