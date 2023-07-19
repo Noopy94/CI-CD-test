@@ -1,0 +1,35 @@
+# Github Action의 이름 설정
+name: CI-workflow
+
+# Action의 Trigger 설정
+on:
+  pull_request:
+    branches: ['master']
+
+  # 언제든지 수동으로 실행하게 해주는 옵션
+  workflow_dispatch:
+
+# 직렬 또는 병렬적으로 실행할 작업의 집합
+jobs:
+  # 작업의 이름
+  build:
+    # 작업 실행 환경 이미지 설정
+    runs-on: ubuntu-latest
+
+    # 실행할 명령들을 순서에 맞게 나열
+    steps:
+      # 현재 프로젝트로 작업영역 설정
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Github Action Market에 등록된 Java 환경 설정
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+          cache: 'maven'
+
+      # 빌드 명령어 실행
+      - name: Build with Maven
+        run: cd <BE 폴더명> && mvn -B package --file pom.xml

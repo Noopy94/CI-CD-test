@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.dao.UserDao">
+
+	<select id="selectAll" resultType="User" parameterType="int">
+		SELECT *
+		FROM user
+		WHERE id IN ( SELECT userid FROM linktable
+		WHERE groupid = #{id})
+	</select>
+	<select id="selectOne" parameterType="Int" resultType="User">
+		SELECT *
+		FROM user
+		WHERE Id = #{id}
+	</select>
+	<insert id="insertUser" parameterType="User">
+		INSERT INTO user VALUES
+		(0, #{password}, #{nickname}, #{user_id}, #{height}, #{weight},
+		#{exp})
+	</insert>
+	<select id="search" resultType="User" parameterType="String">
+		SELECT *
+		FROM user
+		WHERE nickname Like concat('%', #{nickname}, '%')
+	</select>
+	<update id="updateUser" parameterType="User">
+		update user
+		SET nickname = #{nickname}, height = #{height}, weight = #{weight}
+		WHERE id = #{id}
+	</update>
+	<select id="selectOnebyId" parameterType="String"
+		resultType="User">
+		SELECT *
+		FROM user
+		WHERE user_id = #{userid}
+	</select>
+	<select id="checkbyId" parameterType="String" resultType="User">
+		SELECT *
+		FROM user
+		WHERE user_id = #{userid}
+	</select>
+	<select id="checkbyNickname" parameterType="String"
+		resultType="User">
+		SELECT *
+		FROM user
+		WHERE nickname = #{nickname}
+	</select>
+
+</mapper>

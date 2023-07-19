@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.dao.LinktableDao">
+
+	<select id="selectbyuser" resultType="Linktable"
+		parameterType="int">
+		SELECT * FROM linktable
+		WHERE userid = #{id} 
+	</select>
+	<select id="selectbygroup" parameterType="Int" resultType="Linktable">
+		SELECT *
+		FROM linktable
+		WHERE groupid = #{id}
+	</select>
+	<insert id="insertLinktable" parameterType="Linktable">
+		INSERT INTO linktable VALUES 
+		(#{userid},#{groupid}, 0)
+	</insert>
+</mapper>

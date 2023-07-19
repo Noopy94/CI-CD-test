@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.dao.GroupDao">
+
+	<select id="selectAll" resultType="Group" parameterType="int">
+		SELECT *
+		FROM grouptable
+		WHERE id IN (
+		SELECT groupid
+		FROM linktable
+		WHERE userid =
+		#{id}
+		)
+	</select>
+	<select id="selectOne" parameterType="Int" resultType="Group">
+		SELECT *
+		FROM grouptable
+		WHERE id = #{id}
+	</select>
+	<insert id="insertGroup" parameterType="Group">
+		INSERT INTO grouptable
+		(id, name, master, password, detail, notice)
+		VALUES (0, #{name},
+		#{master}, #{password}, #{detail}, #{notice})
+	</insert>
+	<select id="search" resultType="Group" parameterType="String">
+		SELECT *
+		FROM grouptable
+		WHERE name Like concat('%', #{groupname}, '%')
+	</select>
+	<update id="updateGroup" parameterType="Group">
+		update grouptable
+		SET
+		notice = #{notice}, password = #{password}, detail = #{detail}
+		WHERE id
+		= #{id}
+	</update>
+	<select id="lastnumGroup" resultType="Int">
+		SELECT LAST_INSERT_ID()
+	</select>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.dao.ExerciseDao">
+
+	<select id="selectAll" resultType="Exercise"
+		parameterType="int">
+		SELECT * FROM exercise
+		WHERE user_id = #{id}
+	</select>
+	<select id="selectOne" parameterType="Int" resultType="Exercise">
+		SELECT *
+		FROM exercise
+		WHERE id = #{id}
+	</select>
+	<insert id="insertExercise" parameterType="Exercise">
+		INSERT INTO exercise VALUES 
+		(0, #{user_id}, #{name}, #{time})
+	</insert>
+	<delete id="deleteExercise" parameterType="int">
+		DELETE FROM exercise
+		WHERE id = #{id}
+	</delete>
+	<!--이름 바꾸는건 없다 시간만 바꾼다. -->
+	<update id="updateExercise" parameterType="Exercise">
+		update exercise
+		SET time = #{time}
+		WHERE id = #{id}
+	</update>
+</mapper>

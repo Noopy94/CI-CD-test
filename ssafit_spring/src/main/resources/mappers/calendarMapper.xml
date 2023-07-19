@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.ssafit.dao.CalendarDao">
+
+	<select id="selectAll" parameterType="map" resultType="Calendar">
+		SELECT *
+		FROM calendar WHERE user_id = #{user_id} AND MONTH(date) = #{month}
+	</select>
+
+	<!-- selectOne 메서드에 대한 쿼리 매핑 -->
+	<select id="selectOne" parameterType="map" resultType="Calendar">
+		SELECT *
+		FROM calendar WHERE user_id = #{user_id} AND MONTH(date) = #{month}
+		AND DAY(date) = #{day}
+	</select>
+
+	<!-- insertCalendar 메서드에 대한 쿼리 매핑 -->
+	<insert id="insertCalendar" parameterType="Calendar">
+		INSERT INTO calendar
+		VALUES (0, #{user_id}, #{date}, #{timesum})
+	</insert>
+
+	<select id="rankAll" parameterType="map" resultType="Calendar">
+		SELECT *
+		FROM calendar WHERE MONTH(date) = #{month} AND
+		dayofmonth(date) =
+		#{day}
+		ORDER BY timesum DESC LIMIT 3;
+	</select>
+
+	<select id="rankbyGroup" parameterType="map" resultType="Calendar">
+		SELECT C.*
+		FROM calendar C
+		INNER JOIN linktable LT ON C.user_id = LT.userid
+		INNER JOIN grouptable GT ON LT.groupid = GT.id
+		WHERE GT.id = #{grouptable_id}
+		ORDER BY C.timesum DESC
+		LIMIT 3;
+	</select>
+
+
+
+</mapper>
